@@ -64,10 +64,17 @@ export default async function LandlordDashboard({ params, searchParams }: { para
             </div>
           </div>
           {!isPro && (
-            <a href={`https://arcanum-payments.vercel.app/pay?app=apartzm&product=Pro+Landlord+Subscription&amount=400&callback=${encodeURIComponent(`https://apartzm.vercel.app/api/subscription?landlord_id=${params.id}`)}`}
-              className="mt-3 inline-block bg-yellow-400 text-yellow-900 font-bold text-sm px-4 py-2 rounded-full hover:bg-yellow-500 transition-colors">
-              Upgrade to PRO — ZMW 400/mo →
-            </a>
+            <div className="mt-3 p-3 rounded-xl" style={{ background: "#fefce8", border: "1px solid #fde68a" }}>
+              <p className="text-xs text-yellow-800 mb-2">
+                <strong>Free:</strong> Unlimited listings · Tenants can contact you directly<br />
+                <strong>PRO — ZMW 400/mo:</strong> Featured at top of search · Verified badge · Viewing requests dashboard
+              </p>
+              <a href={`https://arcanum-payments.vercel.app/pay?app=apartzm&product=Pro+Landlord+Subscription&amount=400&callback=${encodeURIComponent(`https://apartzm.vercel.app/api/subscription?landlord_id=${params.id}&status=success`)}`}
+                className="inline-block font-black text-sm px-4 py-2 rounded-full text-yellow-900 hover:bg-yellow-300 transition-colors"
+                style={{ background: "#fde047" }}>
+                Upgrade to PRO — ZMW 400/mo →
+              </a>
+            </div>
           )}
         </div>
 
@@ -114,7 +121,7 @@ export default async function LandlordDashboard({ params, searchParams }: { para
                     }`}>{apt.availability}</span>
                   </div>
                   <p className="text-xs text-gray-500 mt-1">📍 {apt.area} · {apt.bedrooms === 0 ? "Bedsitter" : `${apt.bedrooms} bed`}</p>
-                  <p className="text-indigo-700 font-black text-sm mt-1">ZMW {Number(apt.rent_zmw).toLocaleString()}/mo</p>
+                  <p className="text-indigo-700 font-black text-sm mt-1">ZMW {Number(apt.rent_zmw).toLocaleString()}/day</p>
                   <p className="text-xs text-gray-400 mt-1">{apt.views ?? 0} views</p>
                 </Link>
               ))}
