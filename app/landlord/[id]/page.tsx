@@ -4,7 +4,8 @@ import Link from "next/link";
 
 export const dynamic = "force-dynamic";
 
-export default async function LandlordDashboard({ params }: { params: { id: string } }) {
+export default async function LandlordDashboard({ params, searchParams }: { params: { id: string }; searchParams: { upgraded?: string } }) {
+  const upgraded = searchParams.upgraded;
   const { data: landlord } = await supabaseAdmin
     .from("landlords")
     .select("*")
@@ -39,6 +40,16 @@ export default async function LandlordDashboard({ params }: { params: { id: stri
       </header>
 
       <main className="max-w-4xl mx-auto px-4 py-6 space-y-6">
+        {upgraded === "1" && (
+          <div className="bg-green-50 border border-green-200 text-green-800 rounded-xl px-5 py-3 text-sm font-semibold">
+            🎉 You are now a PRO landlord! Your listings are now featured at the top.
+          </div>
+        )}
+        {upgraded === "0" && (
+          <div className="bg-red-50 border border-red-200 text-red-700 rounded-xl px-5 py-3 text-sm font-semibold">
+            ⚠️ Payment was not completed. Try upgrading again.
+          </div>
+        )}
         {/* Profile */}
         <div className="bg-white rounded-xl p-5 border">
           <div className="flex items-center justify-between">
