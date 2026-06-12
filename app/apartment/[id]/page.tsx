@@ -56,7 +56,7 @@ export default async function ApartmentPage({ params }: { params: { id: string }
                 )}
               </div>
               <div className="border-t pt-3">
-                <p className="text-2xl font-black text-indigo-700">ZMW {Number(apt.rent_zmw).toLocaleString()}<span className="text-gray-400 text-base font-normal">/month</span></p>
+                <p className="text-2xl font-black text-indigo-700">ZMW {Number(apt.rent_zmw).toLocaleString()}<span className="text-gray-400 text-base font-normal">/day</span></p>
                 {apt.deposit_zmw && (
                   <p className="text-sm text-gray-500 mt-0.5">Deposit: ZMW {Number(apt.deposit_zmw).toLocaleString()}</p>
                 )}

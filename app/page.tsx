@@ -252,7 +252,7 @@ function ApartmentCard({ apt }: { apt: any }) {
         <div className="flex items-center justify-between mt-3">
           <div>
             <span className="text-lg font-black" style={{ color: "#4f46e5" }}>ZMW {Number(apt.rent_zmw).toLocaleString()}</span>
-            <span className="text-xs text-gray-400">/mo</span>
+            <span className="text-xs text-gray-400">/day</span>
           </div>
           {apt.landlords?.is_verified && (
             <span className="text-xs px-2 py-1 rounded-full font-bold" style={{ background: "#ede9fe", color: "#7c3aed" }}>✓ Verified</span>
